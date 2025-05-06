@@ -5,8 +5,8 @@ const bigFiveQuestions = [
       { text: "1 hr", score: 1 },
       { text: "2 hrs", score: 2 },
       { text: "3 hrs", score: 3 },
-      { text: "2 hrs", score: 2 },
-      { text: "More than these", score: 2 },
+      { text: "4 hrs", score: 4 },
+      { text: "More than these", score: 5 },
     ],
   },
   {
@@ -32,7 +32,7 @@ const bigFiveQuestions = [
     ],
   },
   {
-    text: "2. Which entertainment application you preferred?",
+    text: "4. Which entertainment application you preferred?",
     options: [
       { text: "Jio Hotstar", score: 2 },
       { text: "Kuku Tv", score: 2 },
@@ -43,7 +43,7 @@ const bigFiveQuestions = [
     ],
   },
   {
-    text: "0. Which type of gaming application you like most?",
+    text: "5. Which type of gaming application you like most?",
     options: [
       { text: "Free Fire Max", score: 0 },
       { text: "Battlegrounds Mobile India (BGMI)", score: 0 },
@@ -142,7 +142,7 @@ const bigFiveQuestions = [
     ],
   },
   {
-    text: "12. Which navigation and maps application do you use frequently?",
+    text: "14. Which navigation and maps application do you use frequently?",
     options: [
       { text: "Google Maps", score: 0 },
       { text: "Waze", score: 2 },
@@ -153,7 +153,7 @@ const bigFiveQuestions = [
     ],
   },
   {
-    text: "10. Which sports application you frequently use?",
+    text: "15. Which sports application you frequently use?",
     options: [
       { text: "Cricbuzz", score: 0 },
       { text: "CREX", score: 2 },

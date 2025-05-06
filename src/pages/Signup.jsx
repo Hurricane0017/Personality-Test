@@ -129,8 +129,8 @@ const Signup = () => {
       setSubmitted(true);
       setFormData({ name: '', email: '', password: '' });
 
+      await supabase.auth.signOut();
       setTimeout(() => {
-        console.log('Logged out successfully1');
         navigate('/login');
       }, 1500);
     } catch (err) {
