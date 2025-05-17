@@ -8,7 +8,8 @@ const Question = ({
   showBack,
   isLastQuestion,
   isFirstQuestion,
-  selectedOptions
+  selectedOptions,
+  isSaving
 }) => {
   const [selectedIndexes, setSelectedIndexes] = useState(selectedOptions || []);
   const navigate = useNavigate();
@@ -20,19 +21,21 @@ const Question = ({
   const handleCheckboxChange = (idx) => {
     setSelectedIndexes((prev) => {
       if (prev.includes(idx)) {
-        return prev.filter((i) => i !== idx); // Deselect
+        return prev.filter((i) => i !== idx); 
       } else {
-        return [...prev, idx]; // Select
+        return [...prev, idx]; 
       }
     });
   };
 
   const handleNextOrSubmit = () => {
-    // Only proceed if at least one option is selected
     if (selectedIndexes.length > 0) {
-      onAnswer(selectedIndexes);
+      const selectedTexts = selectedIndexes.map(idx => question.options[idx].text);
+      
+      onAnswer({
+        optionTexts: selectedTexts,
+      });
     } else {
-      // Alert the user they need to select an option
       alert("Please select at least one option before continuing.");
     }
   };
@@ -80,15 +83,16 @@ const Question = ({
         )}
         <button
           onClick={handleNextOrSubmit}
-          disabled={selectedIndexes.length === 0}
-          className={`px-6 py-2 rounded-xl font-semibold text-white ${selectedIndexes.length === 0
+          disabled={selectedIndexes.length === 0 || isSaving}
+          className={`px-6 py-2 rounded-xl font-semibold text-white ${
+            selectedIndexes.length === 0 || isSaving
               ? 'bg-gray-400 cursor-not-allowed'
               : isLastQuestion
                 ? 'bg-blue-600 hover:bg-blue-800'
                 : 'bg-green-600 hover:bg-green-700'
-            }`}
+          }`}
         >
-          {isLastQuestion ? 'Submit' : 'Next'}
+          {isSaving ? 'Saving...' : isLastQuestion ? 'Submit' : 'Next'}
         </button>
       </div>
     </div>
